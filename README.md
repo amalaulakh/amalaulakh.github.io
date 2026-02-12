@@ -1,2 +1,2 @@
 # amalaulakh.github.io
-tutorial 1
+INST 630
