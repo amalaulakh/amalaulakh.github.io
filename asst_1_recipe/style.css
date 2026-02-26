@@ -1,0 +1,232 @@
+
+/* The Ultimate Comfort Chocolate Chip Cookie - STYLE CSS */
+
+/* CSS Custom Properties/Variables */
+:root {
+    --color-cream: #faf6f0;
+    --color-parchment: #f0e8d8;
+    --color-plum: #2e1a2e;
+    --color-mauve:#87376b;
+    --color-light: #c98bb5; 
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lora', serif; 
+
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+}
+
+/* base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    font-style: normal;
+    background-color: var(--color-cream);
+    color: var(--color-plum);
+    line-height: 1.7;
+} 
+
+/* recipe container — CSS grid */
+.recipe-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 var(--spacing-md);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "meta"
+        "description"
+        "ingredients"
+        "instructions"
+        "footer";
+    gap: var(--spacing-lg);
+}
+
+/* section and grid area */
+.recipe-header        { grid-area: header; }
+.recipe-meta          { grid-area: meta; }
+.recipe-description   { grid-area: description; }
+.ingredients-section  { grid-area: ingredients; }
+.instructions-section { grid-area: instructions; }
+.recipe-footer        { grid-area: footer; }
+
+/* header */
+.recipe-header {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    border-bottom: 2px solid var(--color-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+.recipe-title {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    color: var(--color-plum);
+    margin-bottom: var(--spacing-md);
+}
+
+.recipe-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    border: 4px solid var(--color-parchment);
+}
+
+/* flexbox */
+.recipe-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+    background-color: var(--color-parchment);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.meta-item {
+    text-align: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.meta-item strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-mauve);
+    margin-bottom: 0.25rem;
+}
+
+/* description */
+.recipe-description {
+    border-left: 4px solid var(--color-mauve);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--color-parchment);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: var(--spacing-lg);
+    font-style: italic;
+    font-size: 1.05rem;
+}
+
+/* headings section */
+.ingredients-section h2,
+.instructions-section h2 {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    color: var(--color-mauve);
+    border-bottom: 2px solid var(--color-light);
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+/* ingredients section  */
+.ingredients-section {
+    background-color: var(--color-parchment);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.ingredients-list {
+    list-style: none;
+}
+
+.ingredients-list li {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-light);
+
+}
+
+.ingredients-list li:last-child {
+    border-bottom: none;
+}
+
+
+/* instructions section */
+.instructions-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.instructions-list {
+    list-style: none;
+}
+
+.instruction-step {
+    background-color: var(--color-parchment);
+    border-radius: 8px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+
+}
+
+.instruction-step strong {
+    display: block;
+    font-family: var(--font-heading);
+    color: var(--color-mauve);
+    margin-bottom: 0.25rem;
+}
+
+
+/* footer section */
+.recipe-footer {
+    border-top: 2px solid var(--color-light);
+    padding: var(--spacing-md) 0;
+    font-size: 0.85rem;
+    color: var(--color-light);
+    font-style: italic;
+}
+
+
+/* Responsive -- desktop (minimum-width: 48rem); Mobile-first (single column is the default) */
+
+    /* Expands to two-column grid on desktop */
+    .recipe-container {
+        grid-template-columns: 1fr 2fr;
+        grid-template-areas:
+            "header      header"
+            "meta        meta"
+            "description description"
+            "ingredients instructions"
+            "footer      footer";
+    }
+
+    .recipe-title {
+        font-size: 2.5rem;
+    }
+
+    .recipe-meta {
+        flex-direction: row;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
