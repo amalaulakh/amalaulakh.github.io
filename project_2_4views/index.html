@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG County Grub: Health Inspection Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>One Dataset, Four Views</h1>
+            <p><strong>PG County Food Safety Explorer</strong> - 435 restaurant inspection records from Prince George's County, MD. The same data tells different stories depending on how it's presented.</p>
+        </header>
+
+        <nav class="view-selector">
+            <button class="view-button" id="btn-external" data-view="external">Map &amp; Charts</button>
+            <button class="view-button" id="btn-table" data-view="table">Inspection Log</button>
+            <button class="view-button" id="btn-categories" data-view="categories">By Category</button>
+            <button class="view-button" id="btn-stats" data-view="stats">Dashboard</button>
+        </nav>
+
+        <main class="display-container">
+            <div id="data-display">
+                <div class="loading">Loading inspection data…</div>
+            </div>
+        </main>
+
+        <section class="asst-box">
+            <h3>Assignment Notes</h3>
+            <ol>
+                <li><strong>Data Source:</strong> data.json - GeoJSON FeatureCollection, 435 PG County food establishment inspections</li>
+                <li><strong>Four Views:</strong> Map+Charts (Leaflet.js + Chart.js), sortable Table, Category groupings, Statistics dashboard</li>
+                <li><strong>External Libraries:</strong> Leaflet.js for the interactive map, Chart.js for the donut chart</li>
+                <li><strong>Design:</strong> Cormorant Garamond + Nunito + DM Mono · warm, earthtone dashboard aesthetic</li>
+            </ol>
+        </section>
+    </div>
+
+    <script type="module" src="./script.js" defer></script>
+</body>
+</html>
