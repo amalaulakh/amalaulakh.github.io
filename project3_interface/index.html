@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital Signs - the world right now</title>
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+    <!-- chart.js library  -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="brand">
+                <span class="brand-mark">✚</span>
+                <div>
+                    <h1 class="site-title">Vital Signs</h1>
+                    <p class="site-tagline">a little health dashboard</p>
+                </div>
+            </a>
+            <nav class="meta-nav">
+                <a href="index.html" class="active">World</a>
+                <a href="country.html">Country</a>
+                <a href="compare.html">Compare</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-intro">
+            <p class="eyebrow">the world, right now</p>
+            <h2 class="page-heading">Numbers that <em>matter</em>.</h2>
+            <p class="page-body">
+                A snapshot of the global impact of COVID-19: total cases, recoveries, and the countries with the most cases. Pulled from <a href="https://disease.sh" target="_blank">disease.sh</a>, an open data API.
+            </p>
+        </section>
+
+        <!-- shows when data is loading -->
+        <div id="loading-state" class="loading-state">
+            <p>loading data...</p>
+        </div>
+
+        <!-- shows if there is an error -->
+        <div id="error-state" class="error-state hidden">
+            <p>oops - couldn't load the data right now. try refreshing?</p>
+        </div>
+
+        <!-- main content (hidden until data loads) -->
+        <div id="content" class="hidden">
+
+            <!-- top stats  -->
+            <section class="section">
+                <div class="section-header">
+                    <p class="section-number">01</p>
+                    <h3 class="section-heading">the big picture</h3>
+                </div>
+                <div class="stat-grid">
+                    <div class="stat-card color-saffron">
+                        <p class="stat-label">total cases</p>
+                        <p class="stat-value" id="stat-cases">—</p>
+                        <p class="stat-trend" id="trend-cases"></p>
+                    </div>
+                    <div class="stat-card color-jade">
+                        <p class="stat-label">recovered</p>
+                        <p class="stat-value" id="stat-recovered">—</p>
+                        <p class="stat-trend" id="trend-recovered"></p>
+                    </div>
+                    <div class="stat-card color-pomegranate">
+                        <p class="stat-label">active</p>
+                        <p class="stat-value" id="stat-active">—</p>
+                        <p class="stat-trend" id="trend-active"></p>
+                    </div>
+                    <div class="stat-card color-indigo">
+                        <p class="stat-label">tests run</p>
+                        <p class="stat-value" id="stat-tests">—</p>
+                        <p class="stat-trend" id="trend-tests"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!--top 10 -->
+            <section class="section">
+                <div class="section-header">
+                    <p class="section-number">02</p>
+                    <h3 class="section-heading">top 10 by cases</h3>
+                    <p class="section-sub">curious about a specific country? hop over to the <a href="country.html">country view</a>.</p>
+                </div>
+                <div class="chart-frame">
+                    <canvas id="countries-chart"></canvas>
+                </div>
+            </section>
+
+            <!--breakdown -->
+            <section class="section">
+                <div class="section-header">
+                    <p class="section-number">03</p>
+                    <h3 class="section-heading">how it breaks down</h3>
+                    <p class="section-sub">a slice of the global pie: recovered, active, and lost.</p>
+                </div>
+                <div class="chart-frame small">
+                    <canvas id="breakdown-chart"></canvas>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>made with <span class="heart">♥</span> for INST 630 · data from <a href="https://disease.sh" target="_blank">disease.sh</a> · charts by <a href="https://www.chartjs.org" target="_blank">chart.js</a></p>
+    </footer>
+
+    <script src="global.js"></script>
+</body>
+</html>

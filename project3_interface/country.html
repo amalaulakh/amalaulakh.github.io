@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital Signs - pick a country</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="brand">
+                <span class="brand-mark">✚</span>
+                <div>
+                    <h1 class="site-title">Vital Signs</h1>
+                    <p class="site-tagline">a little health dashboard</p>
+                </div>
+            </a>
+            <nav class="meta-nav">
+                <a href="index.html">World</a>
+                <a href="country.html" class="active">Country</a>
+                <a href="compare.html">Compare</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-intro">
+            <p class="eyebrow">zoom in</p>
+            <h2 class="page-heading">Pick a country, <em>see</em> the data.</h2>
+            <p class="page-body">
+                Choose any country from the dropdown to see its latest stats and case breakdown.
+            </p>
+        </section>
+
+        <div id="loading-state" class="loading-state">
+            <p>loading countries...</p>
+        </div>
+
+        <div id="error-state" class="error-state hidden">
+            <p>oops - couldn't load the data right now. try refreshing?</p>
+        </div>
+
+        <div id="content" class="hidden">
+
+            <!--country dropdown -->
+            <div class="controls">
+                <div class="control-field">
+                    <label for="country-select">choose a country</label>
+                    <select id="country-select"></select>
+                </div>
+            </div>
+
+            <!-- country flag and name -->
+            <div class="country-hero">
+                <img id="country-flag" class="country-flag" src="" alt="">
+                <div class="country-info">
+                    <h2 id="country-name">—</h2>
+                    <p class="country-meta" id="country-meta">—</p>
+                </div>
+            </div>
+
+            <!-- stats for the country -->
+            <section class="section">
+                <div class="section-header">
+                    <p class="section-number">01</p>
+                    <h3 class="section-heading">the numbers</h3>
+                </div>
+                <div class="stat-grid">
+                    <div class="stat-card color-saffron">
+                        <p class="stat-label">total cases</p>
+                        <p class="stat-value" id="stat-cases">—</p>
+                        <p class="stat-trend" id="trend-cases"></p>
+                    </div>
+                    <div class="stat-card color-jade">
+                        <p class="stat-label">recovered</p>
+                        <p class="stat-value" id="stat-recovered">—</p>
+                        <p class="stat-trend" id="trend-recovered"></p>
+                    </div>
+                    <div class="stat-card color-pomegranate">
+                        <p class="stat-label">active</p>
+                        <p class="stat-value" id="stat-active">—</p>
+                        <p class="stat-trend" id="trend-active"></p>
+                    </div>
+                    <div class="stat-card color-indigo">
+                        <p class="stat-label">deaths</p>
+                        <p class="stat-value" id="stat-deaths">—</p>
+                        <p class="stat-trend" id="trend-deaths"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- doughnut chart -->
+            <section class="section">
+                <div class="section-header">
+                    <p class="section-number">02</p>
+                    <h3 class="section-heading">case breakdown</h3>
+                    <p class="section-sub">how this country's cases split across recovered, active, and lost.</p>
+                </div>
+                <div class="chart-frame small">
+                    <canvas id="country-chart"></canvas>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>made with <span class="heart">♥</span> for INST 630 · data from <a href="https://disease.sh" target="_blank">disease.sh</a> · charts by <a href="https://www.chartjs.org" target="_blank">chart.js</a></p>
+    </footer>
+
+    <script src="country.js"></script>
+</body>
+</html>
