@@ -1,0 +1,448 @@
+/* Vital Signs COVID Dashboard
+   Amal Aulakh - INST 630 */
+
+/* color variables - so I don't have to retype hex codes */
+:root {
+    --night: #1a2444;
+    --night-deep: #131a33;
+    --night-soft: #283356;
+    --cream: #f5ecd7;
+    --cream-soft: #ebe1c8;
+    --saffron: #f4b942;
+    --pomegranate: #d64545;
+    --jade: #5fa890;
+    --indigo: #6b5dd3;
+}
+
+/* basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--night);
+    color: var(--cream);
+    font-family: 'DM Sans', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+a {
+    color: var(--saffron);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--pomegranate);
+}
+
+/* HEADER */
+.site-header {
+    border-bottom: 1px solid var(--night-soft);
+    padding: 24px 32px;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--cream);
+}
+
+.brand-mark {
+    width: 36px;
+    height: 36px;
+    background-color: var(--saffron);
+    color: var(--night);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.site-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.site-tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--saffron);
+    text-transform: lowercase;
+}
+
+/* nav links */
+.meta-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.meta-nav a {
+    font-size: 14px;
+    color: var(--cream-soft);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+}
+
+.meta-nav a:hover {
+    background-color: var(--night-deep);
+    color: var(--saffron);
+}
+
+.meta-nav a.active {
+    background-color: var(--saffron);
+    color: var(--night);
+    font-weight: 600;
+}
+
+/* MAIN  */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 32px;
+}
+
+/* PAGE INTRO */
+.page-intro {
+    margin-bottom: 48px;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--night);
+    background-color: var(--saffron);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+}
+
+.page-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+.page-heading em {
+    font-style: italic;
+    color: var(--saffron);
+}
+
+.page-body {
+    font-size: 17px;
+    color: var(--cream-soft);
+    max-width: 600px;
+}
+
+/* LOADING & ERROR  */
+.loading-state,
+.error-state {
+    text-align: center;
+    padding: 64px 32px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--cream-soft);
+}
+
+.error-state {
+    color: var(--pomegranate);
+}
+
+.hidden {
+    display: none;
+}
+
+/* SECTION HEADERS */
+.section {
+    margin-bottom: 48px;
+}
+
+.section-header {
+    margin-bottom: 24px;
+}
+
+.section-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--pomegranate);
+    margin-bottom: 8px;
+}
+
+.section-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.section-sub {
+    color: var(--cream-soft);
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+/* STAT CARDS */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.stat-card {
+    background-color: var(--night-deep);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--night-soft);
+}
+
+/* each card gets a different color stripe on top */
+.stat-card.color-saffron { border-top: 4px solid var(--saffron); }
+.stat-card.color-jade { border-top: 4px solid var(--jade); }
+.stat-card.color-pomegranate { border-top: 4px solid var(--pomegranate); }
+.stat-card.color-indigo { border-top: 4px solid var(--indigo); }
+
+.stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--cream-soft);
+    margin-bottom: 12px;
+}
+
+.stat-value {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.stat-trend {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--saffron);
+    margin-top: 12px;
+}
+
+/* CHART FRAMES */
+.chart-frame {
+    background-color: var(--night-deep);
+    border: 1px solid var(--night-soft);
+    border-radius: 12px;
+    padding: 32px;
+    height: 480px;
+}
+
+.chart-frame.small {
+    height: 420px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* DROPDOWNS */
+.controls {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    background-color: var(--night-deep);
+    border-radius: 12px;
+    border: 1px solid var(--night-soft);
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.control-field {
+    flex: 1;
+    min-width: 240px;
+}
+
+.control-field label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--saffron);
+    margin-bottom: 8px;
+}
+
+.control-field select {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--night);
+    color: var(--cream);
+    border: 1px solid var(--night-soft);
+    border-radius: 8px;
+    font-family: 'DM Sans', Arial, sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.control-field select:hover {
+    border-color: var(--saffron);
+}
+
+/* COUNTRY HERO  */
+.country-hero {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 32px;
+    background-color: var(--night-deep);
+    border: 1px solid var(--night-soft);
+    border-left: 6px solid var(--saffron);
+    border-radius: 12px;
+    margin-bottom: 32px;
+}
+
+.country-flag {
+    width: 80px;
+    height: auto;
+    border: 1px solid var(--night-soft);
+    border-radius: 4px;
+}
+
+.country-info h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.country-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--saffron);
+}
+
+/* COMPARE COLUMNS */
+.compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.compare-column {
+    background-color: var(--night-deep);
+    border: 1px solid var(--night-soft);
+    border-radius: 12px;
+    padding: 32px;
+}
+
+.compare-column.column-a {
+    border-top: 4px solid var(--saffron);
+}
+
+.compare-column.column-b {
+    border-top: 4px solid var(--jade);
+}
+
+.compare-column h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.compare-column h3 img {
+    width: 36px;
+    height: auto;
+    border: 1px solid var(--night-soft);
+    border-radius: 3px;
+}
+
+.compare-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--night-soft);
+}
+
+.compare-row:last-child {
+    border-bottom: none;
+}
+
+.compare-row .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--cream-soft);
+}
+
+.compare-row .value {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 18px;
+    color: var(--cream);
+    font-weight: 500;
+}
+
+/* the bigger value gets a pomegranate color */
+.compare-row .value.higher {
+    color: var(--pomegranate);
+}
+
+/* FOOTER */
+.site-footer {
+    border-top: 1px solid var(--night-soft);
+    padding: 32px;
+    text-align: center;
+    margin-top: 48px;
+}
+
+.site-footer p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--cream-soft);
+}
+
+.site-footer .heart {
+    color: var(--pomegranate);
+}
+
+/* RESPONSIVE  */
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-heading {
+        font-size: 36px;
+    }
+
+    .compare-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .country-hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
